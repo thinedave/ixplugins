@@ -9,7 +9,11 @@ PLUGIN.readme = [[
 
 ix.command.Add("PlyBan", {
 	description = "Bans a player. Leave [minutes] blank for permanent.",
-	arguments = {ix.type.player, bit.bor(ix.type.text, ix.type.optional), ix.type.text},
+	arguments = {
+		ix.type.player,
+		ix.type.number,
+		bit.bor(ix.type.string, ix.type.optional)
+	},
 	OnRun = function(self, client, target, minutes, reason)
 
 		if (!client:IsAdmin()) then
@@ -25,7 +29,11 @@ ix.command.Add("PlyBan", {
 
 ix.command.Add("PlyBanID", {
 	description = "Bans a player from their SteamID. Leave [minutes] blank for permanent.",
-	arguments = {ix.type.text, bit.bor(ix.type.text, ix.type.optional), ix.type.text},
+	arguments = {
+		ix.type.string,
+		ix.type.number,
+		bit.bor(ix.type.string, ix.type.optional)
+	},
 	OnRun = function(self, client, steamid, minutes, reason)
 
 		if (!client:IsAdmin()) then
@@ -83,7 +91,9 @@ ix.command.Add("PlySetHealth", {
 
 		if (!client:IsAdmin()) then
 			return "You can't do that!"
-		end  
+		end
+
+		local target = {target}
 
         ulx.hp( client, target, amount )
 
@@ -100,6 +110,8 @@ ix.command.Add("PlySlay", {
 		if (!client:IsAdmin()) then
 			return "You can't do that!"
 		end  
+
+		local target = {target}
 
         ulx.slay( client, target)
 
