@@ -39,10 +39,6 @@ ix.command.Add("CleanUpItems", {
 	superAdminOnly = true,
 	OnRun = function(self, client, time, shouldNotice)
 
-		if !CAMI.PlayerHasAccess(client, "Helix - Cleanup Items", nil) then
-			return "You can't do that!"
-		end
-
 		if !isnumber(time) then return "Time must be a number!" end
 
 		if shouldNotice then
@@ -72,10 +68,6 @@ ix.command.Add("ForceCleanUpItems", {
 	superAdminOnly = true,
 	OnRun = function(self, client, shouldNotice)
 
-		if !CAMI.PlayerHasAccess(client, "Helix - Cleanup Items", nil) then
-			return "You can't do that!"
-		end
-
 		if shouldNotice then
 			ix.chat.Send(client, "event", "[WARNING] All dropped items are being destroyed.")
 
@@ -99,10 +91,6 @@ ix.command.Add("ARespawn", {
 	arguments = {bit.bor(ix.type.player, ix.type.optional)},
 	adminOnly = true,
 	OnRun = function(self, client, ply)
-
-		if !CAMI.PlayerHasAccess(client, "Helix - ARespawn", nil) then
-			return "You can't do that!"
-		end
 
 		if !IsValid(ply) then
 			if client:Alive() then
