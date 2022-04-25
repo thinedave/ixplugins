@@ -19,21 +19,6 @@ PLUGIN.readme = [[
 
 ]]
 
-CAMI.RegisterPrivilege({
-	Name = "Helix - Cleanup Items",
-	MinAccess = "superadmin"
-})
-
-CAMI.RegisterPrivilege({
-	Name = "Helix - Remove All Ents",
-	MinAccess = "superadmin"
-})
-
-CAMI.RegisterPrivilege({
-	Name = "Helix - ARespawn",
-	MinAccess = "admin"
-})
-
 ix.command.Add("RemoveAllEnts", {
 	description = "Destroys all of the specified entity class (* compatible).",
 	arguments = {ix.type.string},
