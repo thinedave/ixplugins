@@ -37,11 +37,8 @@ CAMI.RegisterPrivilege({
 ix.command.Add("RemoveAllEnts", {
 	description = "Destroys all of the specified entity class (* compatible).",
 	arguments = {ix.type.string},
+	superAdminOnly = true,
 	OnRun = function(self, client, targets)
-
-		if !CAMI.PlayerHasAccess(client, "Helix - Remove All Ents", nil) then
-			return "You can't do that!"
-		end  
 
 		for _, ent in ipairs(ents.FindByClass(targets)) do
 			ent:Remove()
@@ -54,6 +51,7 @@ ix.command.Add("RemoveAllEnts", {
 ix.command.Add("CleanUpItems", {
 	description = "Destroys all items on the map after the specified amount of time (s).",
 	arguments = {ix.type.number, ix.type.bool},
+	superAdminOnly = true,
 	OnRun = function(self, client, time, shouldNotice)
 
 		if !CAMI.PlayerHasAccess(client, "Helix - Cleanup Items", nil) then
@@ -86,6 +84,7 @@ ix.command.Add("CleanUpItems", {
 ix.command.Add("ForceCleanUpItems", {
 	description = "Immediately destroys all items on the map.",
 	arguments = {ix.type.bool},
+	superAdminOnly = true,
 	OnRun = function(self, client, shouldNotice)
 
 		if !CAMI.PlayerHasAccess(client, "Helix - Cleanup Items", nil) then
@@ -113,6 +112,7 @@ ix.command.Add("ForceCleanUpItems", {
 ix.command.Add("ARespawn", {
 	description = "Automatically respawn a character. Leave field blank to respawn yourself.",
 	arguments = {bit.bor(ix.type.player, ix.type.optional)},
+	adminOnly = true,
 	OnRun = function(self, client, ply)
 
 		if !CAMI.PlayerHasAccess(client, "Helix - ARespawn", nil) then
