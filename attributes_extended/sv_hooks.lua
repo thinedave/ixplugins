@@ -15,14 +15,6 @@ util.AddNetworkString("ixAttribLogs")
 
 function PLUGIN:OnCharacterCreated(client, char)
     char:SetData("attrib_accolades", 0)
-    char:SetData("attrib_constitution_modifier", 0)
-    --char:SetData("attrib_mental", 0)
-    char:SetData("attrib_mental_modifier", 0)
-    --char:SetData("attrib_persona", 0)
-    char:SetData("attrib_persona_modifier", 0)
-    --char:SetData("attrib_physical", 0)
-    char:SetData("attrib_physical_modifier", 0)
-
     char:SetAttributes("attributes", {nil})
 
 end
@@ -34,7 +26,6 @@ net.Receive("ixSendHackyAttributes", function(_, client)
     local shouldReturn = true
 
     for i, v in pairs(tbl) do
-        if i != "attrib_physical" and i != "attrib_persona" and i != "attrib_mental" and i != "attrib_constitution" then continue end
         local shouldReturn2 = true
 
         for _, k in pairs(v) do
